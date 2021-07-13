@@ -1,25 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Home page</title>
 </head>
 <body>
-    <div>
-        <div>Nome do product:</div>
-        <div>Valor: <span>20,00</span></div>
-        <div>Data de entrega: <span>16/07/2021</span></div>
+    <div th:each="pedidos : ${pedidos}">
+        <div th:text="${pedidos.nomeProduto}">Nome do product:</div>
+        <div>Valor: <span th:text="${pedidos.valorNegociado}">20,00</span></div>
+        <div>Data de entrega: <span th:text="${pedidos.dataDeEntrega}">16/07/2021</span></div>
 
         <div>Produto</div>
-        <div>url do produto</div>
+        <div>
+            <input th:value="${pedidos.urlProduto}" value=" url do produto"/>
+        </div>
 
         <div>Descrição</div>
         <div>
-            <textarea>Descrição dos produtos</textarea>
+            <textarea th:text="${pedidos.Descricao}">Descrição dos produtos</textarea>
         </div>
 
         <div>
-            <img src=""/>
+            <img th:src="${pedidos.urlImagem}"/>
         </div>
     </div>
 </body>
